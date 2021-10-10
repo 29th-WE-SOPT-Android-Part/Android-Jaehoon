@@ -16,9 +16,6 @@
             android:name=".SignUpActivity"
             android:exported="true" />
         <activity
-            android:name=".SecondActivity"
-            android:exported="true" />
-        <activity
             android:name=".SignInActivity"
             android:exported="true">
             <intent-filter>
