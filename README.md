@@ -9,10 +9,18 @@
 ## Level 1
 
 - SOPTHub 로그인 페이지 만들기
-  - 아이디, 비t번호 입력이 모두 되어있을 때만 로그인 버튼 작동
-  '''
-     if(!binding.etId.text.toString().isEmpty() && !binding.etPw.text.toString().isEmpty()) {
-      ...
-     }
+  - 버튼 클릭 시 모든 EditText가 입력되어 있는 지 확인
   
-  '''
+  ```
+     if(!binding.etId.text.toString().isEmpty() && !binding.etPw.text.toString().isEmpty()) {   
+        ...  
+     }
+  ```
+- SOPTHub 회원가입 페이지 만들기
+  - 버튼 클릭 시 모든 EditText가 입력되어 있는 지 확인
+    
+   ```
+      if(!etName.text.toString().isEmpty() && !etId.text.toString().isEmpty() && !etPw.text.toString().isEmpty()) {
+        ...
+      }
+   ```
