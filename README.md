@@ -39,6 +39,7 @@
       activityResultLauncher.launch(intent)
     ```
     
+    
 - SignUpActivity
   - '회원가입 완료' 버튼 클릭 시 모든 EditText가 입력되어 있는 지 확인
     
@@ -56,6 +57,7 @@
     ```xml
       android:inputType="textPassword"
     ```
+
 
 ## Level 2
 
@@ -105,6 +107,7 @@
       }
     ```
 
+
 - 인텐트
   - 명시적 인텐트
     - 인텐트에 클래스 객체나 컴포넌트 이름을 지정하여 호출할 대상을 확실히 알 수 있는 경우
@@ -115,6 +118,7 @@
     - 인텐트의 액션과 데이터를 지정하긴 했지만, 호출할 대상이 달라질 수 있는 경우
     - 안드로이드 시스템이 인텐트를 이용해 요청한 정보를 처리할 수 있는 적절한 컴포넌트를 찾아 사용자에게 그 대상과 처리 결과를 보여줌
     - 해당 기능들을 지원하는 앱들이 있는 경우에 암시적 인텐트를 사용해서 그 앱들을 사용
+    
     
 - HomeActivity 화면 레이아웃 수정
   - nestedScrollView 사용
@@ -135,6 +139,7 @@
 
       </androidx.core.widget.NestedScrollView>
     ```
+  
   
   - constraintDimensionRatio 속성 사용
     - height를 0dp로 설정하고 layout_constraintDimensionRatio에 1을 넣어서 width와 height를 1:1비율로 조정
@@ -158,15 +163,16 @@
   ![image](https://user-images.githubusercontent.com/58066704/137323431-9c1cce45-3cae-4088-bce5-24826adcf059.png)
   
   - 공통점
-    - 상대적으로 간단하며 퍼포먼스 효율이 좋고 용량이 절약됨
-    - 뷰의 직접 참조를 생성하므로 유효하지 않은 뷰 ID로 인해 NPE로부터 안전
+    - findViewById에 비해 상대적으로 간단하며 퍼포먼스 효율이 좋고 용량 절약 가능
+    - 뷰의 직접 참조를 생성하므로 유효하지 않은 뷰 ID로 인한 NPE로부터 안전
 
-  - ViewBinding
-    - 빠른 컴파일 속도와 따로 xml 파일에 태그가 필요하지 않고 자동으로 적용되므로 사용 편의성
+  - ViewBinding의 장점
+    - 빠른 컴파일 속도와 따로 xml 파일에 태그가 필요하지 않고 자동으로 적용되므로 사용 편리
 
-  - DataBinding
-    - 데이터와 뷰를 연결하는 작업을 레이아웃에서 처리
+  - DataBinding의 장점
+    - 데이터와 뷰를 연결하는 작업을 레이아웃에서 처리 가능
     - 동적 UI 콘텐츠 선언 및 양방향 데이터 결합 지원
+
 
 - 코틀린에선 setOnClickListener를 람다식으로 간결하게 표현할 수 있는 이유
   - 코틀린이 함수형 프로그래밍이 가능하기 때문
