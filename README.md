@@ -13,13 +13,15 @@
   
     ```kt
      if(!binding.etId.text.toString().isEmpty() && !binding.etPw.text.toString().isEmpty()) {   
-        ...  
+        
+        //...
+        
      }
     ```
      
   - 비밀번호 EditText inputType 속성
 
-    ```kt
+    ```xml
       android:inputType="textPassword"
     ```
  
@@ -43,13 +45,15 @@
     ```kt
       if(!etName.text.toString().isEmpty()
       && !etId.text.toString().isEmpty() && !etPw.text.toString().isEmpty()) {
-        ...
+        
+        //...
+        
       }
     ```
    
   - 비밀번호 EditText inputType 속성
 
-    ```kt
+    ```xml
       android:inputType="textPassword"
     ```
 
@@ -91,7 +95,7 @@
               }
           }
 
-          ...
+          //...
 
           binding.btnSignUp.setOnClickListener {
               val intent = Intent(this, SignUpActivity::class.java)
@@ -115,7 +119,7 @@
 - HomeActivity 화면 레이아웃 수정
   - nestedScrollView 사용
   
-    ```kt
+    ```xml
       <androidx.core.widget.NestedScrollView
           android:layout_width="match_parent"
           android:layout_height="match_parent"
@@ -125,7 +129,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
               
-              ...
+              //...
               
           </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -135,12 +139,14 @@
   - constraintDimensionRatio 속성 사용
     - height를 0dp로 설정하고 layout_constraintDimensionRatio에 1을 넣어서 width와 height를 1:1비율로 조정
     
-    ```kt
+    ```xml
       <ImageView
                 android:id="@+id/iv_profile"
                 android:layout_width="200dp"  
                 android:layout_height="0dp" 
-                ...
+                
+                //...
+                 
                 app:layout_constraintDimensionRatio="1" />
     ```
 
@@ -148,3 +154,35 @@
 ## Level 3
 
 - DataBinding
+  - 
+
+
+- 코틀린에선 setOnClickListener를 람다식으로 간결하게 표현할 수 있는 이유
+  - 코틀린이 함수형 프로그래밍이 가능하기 때문
+  
+  ```
+    함수형 프로그래밍에서는 함수를 값처럼 다루는 접근 방식을 택함으로써,
+    기존처럼 클래스를 선언하고 그 클래스의 인스턴스를 함수에 넘기는 대신,
+    함수를 직접 다른 함수에 전달할 수 있음.
+  ```
+
+  자바
+  
+    ```java
+      button.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          //TODO
+        }
+      });
+    ```
+
+  코틀린
+  
+    ```kt
+      button.setOnClickListener { 
+        //TODO
+      }
+    ```
+
+<hr/>
