@@ -11,7 +11,7 @@
 - SignInActivity
   - '로그인 버튼' 클릭 시 모든 EditText가 입력되어 있는 지 확인
   
-    ```
+    ```kt
      if(!binding.etId.text.toString().isEmpty() && !binding.etPw.text.toString().isEmpty()) {   
         ...  
      }
@@ -19,20 +19,20 @@
      
   - 비밀번호 EditText inputType 속성
 
-    ```
+    ```kt
       android:inputType="textPassword"
     ```
  
   - 모든 입력이 되었을 때 로그인 버튼 클릭 시 HomeActivity로 이동
 
-    ```
+    ```kt
       val intent = Intent(this, HomeActivity::class.java)
       startActivity(intent)
     ```
     
   - 회원가입 버튼 클릭 시 SignUpActivity로 이동
 
-    ```
+    ```kt
       val intent = Intent(this, SignUpActivity::class.java)
       activityResultLauncher.launch(intent)
     ```
@@ -40,7 +40,7 @@
 - SignUpActivity
   - '회원가입 완료' 버튼 클릭 시 모든 EditText가 입력되어 있는 지 확인
     
-    ```
+    ```kt
       if(!etName.text.toString().isEmpty()
       && !etId.text.toString().isEmpty() && !etPw.text.toString().isEmpty()) {
         ...
@@ -49,20 +49,57 @@
    
   - 비밀번호 EditText inputType 속성
 
-    ```
+    ```kt
       android:inputType="textPassword"
-    ```
-   
-- HomeActivity
-  - ConstraintLayout 내에 LinearLayout를 사용하여 TextView를 정렬 (수정 예정)
-    ```
-      
     ```
 
 ## Level 2
 
 - 화면 이동
+  - SignUpActivity
+    ```kt
+      binding.apply {
+              btnSignUp.setOnClickListener {
+                  if(!etName.text.toString().isEmpty() && !etId.text.toString().isEmpty() && !etPw.text.toString().isEmpty()) {
+                      intent.putExtra("id", etId.text.toString())
+                      intent.putExtra("pw", etPw.text.toString())
+                      setResult(RESULT_OK, intent)
+                      finish()
+                  } else {
+                      Toast.makeText(this@SignUpActivity, "입력되지 않은 정보가 있습니다", Toast.LENGTH_SHORT).show()
+                  }
+              }
+          }
+    ```
+  
+  - SignInActivity
 
+    ```KT
+      class SignInActivity : AppCompatActivity() {
+        private lateinit var binding : ActivitySignInBinding
+        private lateinit var activityResultLauncher : ActivityResultLauncher<Intent>
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+          super.onCreate(savedInstanceState)
+          binding = ActivitySignInBinding.inflate(layoutInflater)
+          setContentView(binding.root)
+
+          activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+              if(it.resultCode == RESULT_OK) {
+                  binding.etId.setText(it.data?.getStringExtra("id"))
+                  binding.etPw.setText(it.data?.getStringExtra("pw"))
+              }
+          }
+
+          ...
+
+          binding.btnSignUp.setOnClickListener {
+              val intent = Intent(this, SignUpActivity::class.java)
+              activityResultLauncher.launch(intent)
+          }
+        }
+      }
+    ```
 
 - 인텐트
   - 명시적 인텐트
@@ -75,12 +112,37 @@
     - 안드로이드 시스템이 인텐트를 이용해 요청한 정보를 처리할 수 있는 적절한 컴포넌트를 찾아 사용자에게 그 대상과 처리 결과를 보여줌
     - 해당 기능들을 지원하는 앱들이 있는 경우에 암시적 인텐트를 사용해서 그 앱들을 사용
     
-
-
 - HomeActivity 화면 레이아웃 수정
+  - nestedScrollView 사용
+  
+    ```kt
+      <androidx.core.widget.NestedScrollView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:fillViewport="true">
 
+          <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+              
+              ...
+              
+          </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+      </androidx.core.widget.NestedScrollView>
+    ```
+  
+  - constraintDimensionRatio 속성 사용
+    - height를 0dp로 설정하고 layout_constraintDimensionRatio에 1을 넣어서 width와 height를 1:1비율로 조정
+    
+    ```kt
+      <ImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="200dp"  
+                android:layout_height="0dp" 
+                ...
+                app:layout_constraintDimensionRatio="1" />
+    ```
 
 
 ## Level 3
