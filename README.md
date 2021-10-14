@@ -153,9 +153,20 @@
 
 ## Level 3
 
-- DataBinding
-  - 
+- ViewBinding & DataBinding
+  - ViewBinding과 DataBinding의 관계
+  ![image](https://user-images.githubusercontent.com/58066704/137323431-9c1cce45-3cae-4088-bce5-24826adcf059.png)
+  
+  - 공통점
+    - 상대적으로 간단하며 퍼포먼스 효율이 좋고 용량이 절약됨
+    - 뷰의 직접 참조를 생성하므로 유효하지 않은 뷰 ID로 인해 NPE로부터 안전
 
+  - ViewBinding
+    - 빠른 컴파일 속도와 따로 xml 파일에 태그가 필요하지 않고 자동으로 적용되므로 사용 편의성
+
+  - DataBinding
+    - 데이터와 뷰를 연결하는 작업을 레이아웃에서 처리
+    - 동적 UI 콘텐츠 선언 및 양방향 데이터 결합 지원
 
 - 코틀린에선 setOnClickListener를 람다식으로 간결하게 표현할 수 있는 이유
   - 코틀린이 함수형 프로그래밍이 가능하기 때문
