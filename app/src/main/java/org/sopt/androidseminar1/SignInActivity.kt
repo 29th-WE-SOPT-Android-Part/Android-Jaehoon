@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import org.sopt.androidseminar1.databinding.ActivitySignInBinding
 
 class SignInActivity : AppCompatActivity() {
@@ -14,8 +15,7 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySignInBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
 
         activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if(it.resultCode == RESULT_OK) {
@@ -24,10 +24,14 @@ class SignInActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnLogin.setOnClickListener {
-            if(!binding.etId.text.toString().isEmpty() && !binding.etPw.text.toString().isEmpty()) {
+        initBtn()
+    }
 
-                Toast.makeText(this, "${binding.etId.text.toString()}님 환영합니다", Toast.LENGTH_SHORT).show()
+    private fun initBtn() {
+        binding.btnLogin.setOnClickListener {
+            if(!binding.etId.text.isEmpty() && !binding.etPw.text.isEmpty()) {
+
+                Toast.makeText(this, "${binding.etId.text}님 환영합니다", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
             } else {
