@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import org.sopt.androidseminar1.databinding.ActivitySignInBinding
+import org.sopt.androidseminar1.home.HomeActivity
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var binding : ActivitySignInBinding
@@ -17,14 +18,17 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
 
+        init()
+        initBtn()
+    }
+
+    private fun init() {
         activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if(it.resultCode == RESULT_OK) {
                 binding.etId.setText(it.data?.getStringExtra("id"))
                 binding.etPw.setText(it.data?.getStringExtra("pw"))
             }
         }
-
-        initBtn()
     }
 
     private fun initBtn() {
