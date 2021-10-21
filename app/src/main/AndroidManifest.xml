@@ -13,18 +13,19 @@
         android:theme="@style/Theme.AndroidSeminar1">
         <activity
             android:name=".home.HomeActivity"
-            android:exported="true" />
-        <activity
-            android:name=".SignUpActivity"
-            android:exported="true" />
-        <activity
-            android:name=".SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SignInActivity"
+            android:exported="true">
         </activity>
     </application>
 
