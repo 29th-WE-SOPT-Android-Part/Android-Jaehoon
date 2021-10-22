@@ -261,29 +261,26 @@
       }
     ```
     
-  - FollowerFragment, FollowerAdapter, Follower 생성
-    - FollowerFragment에 리사이클러뷰 생성
+- FollowerFragment, FollowerAdapter, Follower 생성
+  - FollowerFragment에 리사이클러뷰 생성
       
-      ```xml
-        <androidx.recyclerview.widget.RecyclerView
-          android:id="@+id/rv_follower"
-          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            ...
-          />
-      ```
+    ```xml
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_follower"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          ...
+        />
+    ```
 
-  - RepositoryFragment, RepositoryAdapter, Repository 생성 
-    - RepositoryFragment에 리사이클러뷰 생성, GridLayoutManager
+- RepositoryFragment, RepositoryAdapter, Repository 생성 
+  - RepositoryFragment에 리사이클러뷰 생성, GridLayoutManager
       
-      ```xml
-        <androidx.recyclerview.widget.RecyclerView
-          android:id="@+id/rv_repository"
-          app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            ...
-          />
-      ```
+    ```xml
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_repository"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+          ...
+        />
+    ```
+    
 <hr/>
-
-
-
-
