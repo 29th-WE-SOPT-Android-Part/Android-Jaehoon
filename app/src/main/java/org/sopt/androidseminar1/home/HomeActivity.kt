@@ -23,7 +23,10 @@ class HomeActivity : AppCompatActivity() {
 
     private fun init() {
         val followerFragment = FollowerFragment()
-        supportFragmentManager.beginTransaction().add(R.id.fc_home_list, followerFragment).commit()
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fc_home_list, followerFragment)
+            .commit()
 
         binding.user = User("조재훈", "26", "INFJ",
             "안드파트 최고!\n\n안드파트 최고!\n\n안드파트 최고!\n\n안드파트 최고!\n\n안드파트 최고!")

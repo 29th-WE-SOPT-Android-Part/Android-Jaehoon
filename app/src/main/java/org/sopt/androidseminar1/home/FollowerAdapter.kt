@@ -17,7 +17,6 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerViewHolder {
         val binding = ItemFollowerListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
         return FollowerViewHolder(binding)
     }
 
@@ -25,5 +24,5 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
         holder.onBind(followerList[position])
     }
 
-    override fun getItemCount(): Int = followerList.size
+    override fun getItemCount() = followerList.size
 }

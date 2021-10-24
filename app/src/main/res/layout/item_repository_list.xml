@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
         android:singleLine="true"
-        android:text="title"
+        android:text="@string/title"
         android:textSize="25sp"
         android:textStyle="bold"
         android:ellipsize="end"/>
@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
         android:singleLine="true"
-        android:text="content"
+        android:text="@string/content"
         android:textSize="20sp"
         android:ellipsize="end"/>
 
