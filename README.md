@@ -284,3 +284,40 @@
     ```
     
 <hr/>
+
+## Level 3
+
+- 프래그먼트의 보일러 플레이트 코드 개선
+  - BaseFragment 상속
+
+    ```kt
+      abstract class BaseFragment<B : ViewDataBinding>(@LayoutRes val layoutRes: Int) : Fragment() {
+        private var _binding: B? = null
+        val binding get() = _binding!!
+
+        override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
+            _binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
+            return binding.root
+        }
+
+        override fun onDestroyView() {
+            super.onDestroyView()
+            _binding = null
+        }
+      }
+    ```
+    
+  - BaseFragment 상속
+    ```kt
+      class SampleFragment : BaseFragment<FragmentSampleBinding>(R.layout.fragment_sample) {
+        verride fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        
+        ...
+        
+      }
+    ```
