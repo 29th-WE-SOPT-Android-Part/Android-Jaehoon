@@ -32,7 +32,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun initBtn() {
-        binding.btnLogin.setOnClickListener {
+        binding.btnLogIn.setOnClickListener {
             if(!binding.etId.text.isEmpty() && !binding.etPw.text.isEmpty()) {
 
                 Toast.makeText(this, "${binding.etId.text}님 환영합니다", Toast.LENGTH_SHORT).show()
@@ -43,7 +43,7 @@ class SignInActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnSignUp.setOnClickListener {
+        binding.tvSignUp2.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             activityResultLauncher.launch(intent)
         }

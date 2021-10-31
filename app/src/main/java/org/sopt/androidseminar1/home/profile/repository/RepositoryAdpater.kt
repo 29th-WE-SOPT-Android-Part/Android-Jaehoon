@@ -1,6 +1,5 @@
-package org.sopt.androidseminar1.home
+package org.sopt.androidseminar1.home.profile.repository
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
