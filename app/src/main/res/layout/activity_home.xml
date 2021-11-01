@@ -171,9 +171,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/btn_git" />
 
             <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fc_fragment"
+                android:id="@+id/fc_home_list"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -6,12 +6,16 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.3894204336981824" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_second.xml" value="0.223731884057971" />
-        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_test.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_test2.xml" value="0.24456521739130435" />
+        <entry key="app/src/main/res/layout/fragment_follower.xml" value="0.2477355072463768" />
+        <entry key="app/src/main/res/layout/fragment_repository.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_sample.xml" value="0.10339813232421875" />
         <entry key="app/src/main/res/layout/fragment_sample2.xml" value="0.24456521739130435" />
+        <entry key="app/src/main/res/layout/item_follower_list.xml" value="0.2477355072463768" />
+        <entry key="app/src/main/res/layout/item_repository_list.xml" value="0.2477355072463768" />
         <entry key="app/src/main/res/layout/item_sample_list.xml" value="0.14383975778955796" />
       </map>
     </option>
