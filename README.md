@@ -284,3 +284,76 @@
     ```
     
 <hr/>
+<hr/>
+
+# Week 3
+
+## Level 1
+
+- SignInActivity.kt & SignUpActivity.kt
+  - selector를 사용하여 EditText가 focus 여부에 따라 다른 디자인 출력
+  
+    ```xml
+      <?xml version="1.0" encoding="utf-8"?>
+      <selector xmlns:android="http://schemas.android.com/apk/res/android">
+          <item android:state_focused="true" android:drawable="@drawable/edit_text_selected"/>
+          <item android:state_focused="false" android:drawable="@drawable/edit_text_unselected"/>
+      </selector>
+    ```
+    
+  - 로그인, 회원가입 버튼에 shape를 통해 round 속성 추가
+    
+    ```xml
+      <?xml version="1.0" encoding="utf-8"?>
+      <shape xmlns:android="http://schemas.android.com/apk/res/android"
+          android:shape="rectangle" android:tint="@color/sopt_pink2">
+          <corners android:radius="5dp"/>
+      </shape>
+    ```
+    
+- ProfileFragment.kt
+  - Button에 selector 활용
+      
+    ```xml
+      <selector xmlns:android="http://schemas.android.com/apk/res/android">
+          <item
+              android:state_checked="true"
+              android:drawable="@drawable/shape_profile_btn_selected"
+              />
+          <item
+              android:state_checked="false"
+              android:drawable="@drawable/shape_profile_btn_unselected"
+              />
+      </selector>
+    ```
+    
+  - 이미지 Glide의 CircleCrop기능 활용
+    ```kt
+      Glide.with(this)
+            .load("https://www.riotgames.com/darkroom/2880/656220f9ab667529111a78aae0e6ab9f:d1a7c6d0384f2edf9672d9369a8e9083/01-logo.png")
+            .circleCrop()
+            .into(binding.ivProfile)
+    ```
+   
+- HomeFragment.kt
+  - TabLayout + ViewPager2 추가
+      
+    ```xml
+          <com.google.android.material.tabs.TabLayout
+              android:id="@+id/tl_home_fragment"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              app:tabIndicatorHeight="3dp"
+              app:tabIndicatorColor="@color/sopt_pink2"
+              app:layout_constraintBottom_toTopOf="@+id/vp_home_fragment" />
+
+          <androidx.viewpager2.widget.ViewPager2
+              android:id="@+id/vp_home_fragment"
+              android:layout_width="match_parent"
+              android:layout_height="338dp"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintEnd_toEndOf="parent" />
+    ```
+   
+<hr/>
