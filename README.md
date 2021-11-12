@@ -200,8 +200,6 @@
 
 <hr/>
 
-<hr/>
-
 # Week 2
 
 ## Level 1
@@ -284,7 +282,6 @@
     ```
     
 <hr/>
-<hr/>
 
 # Week 3
 
@@ -356,4 +353,127 @@
               app:layout_constraintEnd_toEndOf="parent" />
     ```
    
+<hr/>
+
+# Week 4
+
+## Level 1
+
+- POSTMAN 테스트 - 회원가입 완료 & 로그인 완료
+  - 회원가입
+    ![스크린샷 2021-11-12 오후 8 38 28](https://user-images.githubusercontent.com/58066704/141474655-e4b7fdb6-e067-4ff4-b759-1c350119bf09.png)
+
+  - 로그인
+    ![스크린샷 2021-11-12 오후 8 38 34](https://user-images.githubusercontent.com/58066704/141474661-b67c1474-501c-4be5-8ff9-00d216c595de.png)
+
+- retrofit
+  - retrofit interface
+    - LoginService.kt
+      ```kt
+        interface LoginService {
+            @Headers("Content-Type:application/json")
+            @POST("user/login")
+            fun postLogin(
+                @Body body: RequestLoginData
+            ) : Call<ResponseLoginData>
+
+            @Headers("Content-Type:application/json")
+            @POST("user/signup")
+            fun postSignUp(
+                @Body body: RequestSignUpData
+            ) : Call<ResponseSignUpData>
+        }
+      ```
+
+  - retrofit 구현체
+    - ServiceCreator.kt
+      ```kt
+        object ServiceCreator {
+            private const val BASE_URL = "https://asia-northeast3-we-sopt-29.cloudfunctions.net/api/"
+
+            private val retrofit: Retrofit = Retrofit
+                .Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+            val loginService : LoginService = retrofit.create(LoginService::class.java)
+            val signUpService : LoginService = retrofit.create(LoginService::class.java)
+        }
+      ```
+    
+  - Request/Response 객체
+    - SignInActivity.kt
+      ```kt
+        private fun initNetwork(){
+            val requestLoginData = RequestLoginData(
+                email = binding.etId.text.toString(),
+                password = binding.etPw.text.toString()
+            )
+
+            val call: Call<ResponseLoginData> = ServiceCreator.loginService.postLogin(requestLoginData)
+
+            call.enqueue(object : Callback<ResponseLoginData> {
+                override fun onResponse(
+                    call: Call<ResponseLoginData>,
+                    response: Response<ResponseLoginData>
+                ) {
+                    if(response.isSuccessful){
+                        val data=response.body()?.data
+
+                        Toast.makeText(this@SignInActivity,"${data?.name}님 반갑습니다!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
+                    }else{
+                        Toast.makeText(this@SignInActivity,"로그인에 실패하셨습니다", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseLoginData>, t: Throwable) {
+                    Log.e("NetworkTest","error:$t")
+                }
+            })
+        }
+      ```
+      
+    - SignUpActivity.kt
+      ```kt
+        private fun initNetwork(){
+            val requestSignUpData = RequestSignUpData(
+                email = binding.etId.text.toString(),
+                name = binding.etName.text.toString(),
+                password=binding.etPw.text.toString()
+            )
+
+            val call: Call<ResponseSignUpData> = ServiceCreator.signUpService.postSignUp(requestSignUpData)
+
+            call.enqueue(object : Callback<ResponseSignUpData> {
+                override fun onResponse(
+                    call: Call<ResponseSignUpData>,
+                    response: Response<ResponseSignUpData>
+                ) {
+                    if(response.isSuccessful){
+                        val data=response.body()?.data
+
+                        Toast.makeText(this@SignUpActivity,"${data?.name}님 회원가입 완료", Toast.LENGTH_SHORT).show()
+
+                        val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
+
+                        intent
+                        .putExtra("id", binding.etId.text.toString())
+                        .putExtra("pw", binding.etPw.text.toString())
+
+                        setResult(RESULT_OK, intent)
+                        finish()
+                    }else{
+                        Toast.makeText(this@SignUpActivity,"회원가입 실패", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseSignUpData>, t: Throwable) {
+                    Log.e("NetworkTest","error:$t")
+                }
+            })
+        }
+      ```
+
 <hr/>
