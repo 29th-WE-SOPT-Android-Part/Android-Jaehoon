@@ -8,28 +8,16 @@
         android:layout_height="match_parent"
         tools:context=".SignInActivity">
 
-        <TextView
+        <ImageView
             android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="69dp"
+            android:layout_height="69dp"
             android:layout_marginTop="40dp"
-            android:text="SOPTHub"
-            android:textColor="@color/sopt_pink"
-            android:textSize="30sp"
-            android:textStyle="bold"
+            android:src="@drawable/git_logo"
+            app:tint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="로그인"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
         <TextView
             android:id="@+id/tv_id"
@@ -37,7 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
-            android:text="아이디"
+            android:text="깃허브 아이디"
+            android:textColor="@color/gray_1"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title" />
@@ -48,9 +37,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
+            android:padding="12dp"
             android:ems="10"
-            android:hint="아이디를 입력해주세요"
+            android:hint="깃허브 아이디를 입력해주세요."
             android:inputType="text"
+            android:textColor="@drawable/edit_text_text_color_selector"
+            android:background="@drawable/edit_text_sign_in_selector"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_id"
@@ -63,6 +55,7 @@
             android:layout_marginTop="20dp"
             android:text="비밀번호"
             android:textStyle="bold"
+            android:textColor="@color/gray_1"
             app:layout_constraintStart_toStartOf="@+id/et_id"
             app:layout_constraintTop_toBottomOf="@+id/et_id" />
 
@@ -72,38 +65,58 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
+            android:padding="12dp"
             android:ems="10"
-            android:hint="비밀번호를 입력해주세요"
+            android:hint="비밀번호를 입력해주세요."
             android:inputType="textPassword"
+            android:textColor="@drawable/edit_text_text_color_selector"
+            android:background="@drawable/edit_text_sign_in_selector"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_pw"
             app:layout_constraintTop_toBottomOf="@+id/tv_pw" />
 
         <Button
-            android:id="@+id/btn_login"
-            android:layout_width="0dp"
+            android:id="@+id/btn_log_in"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="80dp"
-            android:backgroundTint="@color/sopt_pink"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="74dp"
+            android:background="@drawable/shape_sign_in_btn"
             android:text="로그인"
-            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/et_pw"
-            app:layout_constraintStart_toStartOf="@+id/et_pw" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/btn_signUp"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/tv_sign_up_1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:text="회원가입"
-            android:textColor="#777777"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/et_pw"
-            app:layout_constraintStart_toStartOf="@+id/et_pw"
-            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+            android:layout_marginBottom="41dp"
+            android:layout_marginRight="80dp"
+            android:text="계정이 없으신가요?"
+            android:textSize="12sp"
+            android:textColor="@color/gray_3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_sign_up_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="41dp"
+            android:layout_marginLeft="80dp"
+            android:text="회원 가입"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/gray_3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

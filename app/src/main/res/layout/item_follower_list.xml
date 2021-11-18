@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="user"
+            type="org.sopt.androidseminar1.home.profile.follower.Follower" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_follower_profile"
+            android:layout_width="49dp"
+            android:layout_height="0dp"
+            android:layout_margin="21dp"
+            app:imageUrl="@{user.image}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_follower_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:ellipsize="end"
+            android:text="@{user.name}"
+            android:textColor="@color/gray_1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/iv_follower_profile"
+            app:layout_constraintTop_toTopOf="@id/iv_follower_profile" />
+
+        <TextView
+            android:id="@+id/tv_follower_introduction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:text="@{user.introduction}"
+            android:textColor="@color/gray_1"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_follower_profile"
+            app:layout_constraintStart_toStartOf="@id/tv_follower_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
