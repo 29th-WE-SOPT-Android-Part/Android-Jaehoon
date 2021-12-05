@@ -1,15 +1,23 @@
 package org.sopt.androidseminar1.home.profile.follower
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import org.sopt.androidseminar1.*
 import org.sopt.androidseminar1.databinding.FragmentFollowerBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class FollowerFragment : Fragment() {
-    private lateinit var binding : FragmentFollowerBinding
+    private lateinit var binding: FragmentFollowerBinding
     private lateinit var followerAdapter: FollowerAdapter
+    private lateinit var gitFollowerList: List<ResponseGitUserData>
+    private var list = mutableListOf<Follower>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,25 +29,44 @@ class FollowerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initAdapter()
+        init()
+    }
+
+    private fun init() {
+        initFollowerList()
+    }
+
+
+    private fun initFollowerList() {
+        val call: Call<List<ResponseGitUserData>> =
+            GitServiceCreator.gitService.getGitFollowers("ze-zeh")
+        call.enqueue(object : Callback<List<ResponseGitUserData>> {
+            override fun onResponse(
+                call: Call<List<ResponseGitUserData>>,
+                response: Response<List<ResponseGitUserData>>,
+            ) {
+                if (response.isSuccessful) {
+                    gitFollowerList = response?.body() ?: listOf()
+
+                    for (follower in gitFollowerList) {
+                        list.add(Follower(follower.image, follower.name, "follower.introduction"))
+                    }
+                    initAdapter()
+
+                } else {
+                    Toast.makeText(context, "follower list load failed", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<ResponseGitUserData>>, t: Throwable) {
+                Log.e("NetworkTest", "error:$t")
+            }
+        })
     }
 
     private fun initAdapter() {
-        followerAdapter = FollowerAdapter()
+        Log.d("testtt", "f_size: ${list.size.toString()}")
+        followerAdapter = FollowerAdapter(list)
         binding.rvFollower.adapter = followerAdapter
-
-        val uri1 = "https://www.riotgames.com/darkroom/2880/656220f9ab667529111a78aae0e6ab9f:d1a7c6d0384f2edf9672d9369a8e9083/01-logo.png"
-        val uri2 = "https://oopy.lazyrockets.com/api/rest/cdn/image/ea394e8b-b63e-4a1f-93a7-9eacec8414af.png"
-        val uri3 = "https://www.nicepng.com/png/detail/9-96158_riot-fist-inverted1-riot-games-fist-png.png"
-        val uri4 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP3ltW6s3tgglfG1R32s7Pw33JWvmBMFZUIx32obhGivs7omuXMNbtsJnWewV9UC-1-Ug&usqp=CAU"
-
-        followerAdapter.followerList.addAll(
-            listOf(
-                Follower(uri1, "조재훈","안린이"),
-                Follower(uri2, "이동기","안고수"),
-                Follower(uri3, "문다빈","안팟장"),
-                Follower(uri4, "김송현","운팀장")
-            )
-        )
     }
 }
