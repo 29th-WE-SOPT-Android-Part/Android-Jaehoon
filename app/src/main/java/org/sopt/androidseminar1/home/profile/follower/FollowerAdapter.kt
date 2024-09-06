@@ -9,8 +9,7 @@ import com.bumptech.glide.Glide
 import org.sopt.androidseminar1.User
 import org.sopt.androidseminar1.databinding.ItemFollowerListBinding
 
-class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
-    val followerList = mutableListOf<Follower>()
+class FollowerAdapter(var followerList: MutableList<Follower>) : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
 
     class FollowerViewHolder (private val binding : ItemFollowerListBinding) : RecyclerView.ViewHolder(binding.root){
         fun onBind(data : Follower) {

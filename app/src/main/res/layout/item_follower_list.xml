@@ -2,12 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-        <variable
-            name="user"
-            type="org.sopt.androidseminar1.home.profile.follower.Follower" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -49,5 +43,11 @@
             app:layout_constraintStart_toStartOf="@id/tv_follower_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+        <variable
+            name="user"
+            type="org.sopt.androidseminar1.home.profile.follower.Follower" />
+    </data>
 
 </layout>
